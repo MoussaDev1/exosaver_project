@@ -1,8 +1,14 @@
+.env
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+
+#Sensible
+src/main/resources/application.properties
+hs_err_pid38452.log
+hs_err_pid38452.jfr
 
 ### STS ###
 .apt_generated
