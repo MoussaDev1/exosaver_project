@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Represents a Course entity in the application.
  * This class maps to the "course" table in the database.
@@ -34,4 +37,7 @@ public class Course {
     private String objectives;
 
     private String themes;
+
+    @OneToMany(mappedBy = "course")
+    private List<Topic> topic = new ArrayList<>();
 }

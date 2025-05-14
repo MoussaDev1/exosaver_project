@@ -18,7 +18,7 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    @PostMapping("/create")
+    @PostMapping("/courses")
     public ResponseEntity<CourseResponseDTO> createCourse(@RequestBody CourseRequestDTO dto){
         CourseResponseDTO created = courseService.createCourse(dto);
         return new ResponseEntity<>(created, HttpStatus.CREATED);
@@ -29,7 +29,7 @@ public class CourseController {
         return courseService.getAllCourses();
     }
 
-    @GetMapping("course/{id}")
+    @GetMapping("/course/{id}")
     public ResponseEntity<CourseResponseDTO> getCourseById(@PathVariable Long id){
         CourseResponseDTO course = courseService.getCoursesById(id);
         return new ResponseEntity<>(course, HttpStatus.OK);
