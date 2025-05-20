@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api")
@@ -25,8 +25,9 @@ public class CourseController {
     }
 
     @GetMapping("/courses")
-    public List<CourseResponseDTO> getAllCourses(){
-        return courseService.getAllCourses();
+    public ResponseEntity<List<CourseResponseDTO>> getAllCourses(){
+        List<CourseResponseDTO> courses = courseService.getAllCourses();
+        return new ResponseEntity<>(courses, HttpStatus.OK);
     }
 
     @GetMapping("/course/{id}")
@@ -42,7 +43,8 @@ public class CourseController {
     }
 
     @DeleteMapping("/course/{id}")
-    public void deleteCourse(@PathVariable Long id){
+    public ResponseEntity<String> deleteCourse(@PathVariable Long id){
         courseService.deleteCourse(id);
+        return ResponseEntity.ok("Cours supprimé avec succès");
     }
 }

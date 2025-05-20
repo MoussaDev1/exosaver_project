@@ -11,6 +11,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Service class for managing courses within the application.
+ * Provides business logic for creating, retrieving, updating, and deleting courses.
+ * Utilizes CourseRepository for persistence and leverages mapping between entities
+ * and DTOs through CourseMapper to facilitate interaction with external layers.
+ */
 @Service
 public class CourseService {
 

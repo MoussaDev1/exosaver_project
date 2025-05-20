@@ -17,10 +17,9 @@ import java.util.List;
 @Service
 public class TopicService {
 
-
     private final TopicRepository topicRepository;
     private final CourseRepository courseRepository;
-    @Autowired
+
     public TopicService(TopicRepository topicRepository, CourseRepository courseRepository) {
         this.topicRepository = topicRepository;
         this.courseRepository = courseRepository;
@@ -60,5 +59,4 @@ public class TopicService {
                 .orElseThrow(() -> new TopicNotFoundException(id));
         topicRepository.delete(topic);
     }
-
 }

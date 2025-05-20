@@ -1,6 +1,9 @@
 
 # CourseService - Explication
 
+## Pourquoi utilise t-on CourseRepository dans la classe ? :
+Car CourseRepository permet d'éffectuer des opération avec la base de donnée en utilisant extends JPArepository<Course, Long> avec en paramètre une Entity avec la quel on a besoin de faire des opération (Course dans ce cas la).
+
 ---
 
 ## createCourse Explication :
