@@ -35,17 +35,23 @@ public class TopicService {
     }
 
     public TopicResponseDTO getTopicById(Long courseId, Long topicId){
+        Course course = courseRepository.findById(courseId)
+                .orElseThrow(()-> new CourseNotFoundException(courseId));
         Topic topic = topicRepository.findByIdAndCourseId(topicId, courseId)
                 .orElseThrow(() -> new TopicNotFoundException(topicId));
         return TopicMapper.toResponseDTO(topic);
     }
 
     public List<TopicResponseDTO> getAllTopics(Long courseId){
+        Course course = courseRepository.findById(courseId)
+                .orElseThrow(()-> new CourseNotFoundException(courseId));
         List<Topic> topics = topicRepository.findByCourseId(courseId);
         return topics.stream().map(TopicMapper::toResponseDTO).toList();
     }
 
     public TopicResponseDTO updateTopic(Long topicId, Long courseId, TopicRequestDTO dto){
+        Course course = courseRepository.findById(courseId)
+                .orElseThrow(()-> new CourseNotFoundException(courseId));
         Topic topic = topicRepository.findByIdAndCourseId(courseId, topicId)
                 .orElseThrow(() -> new TopicNotFoundException(topicId));
         topic.setTitle(dto.getTitle());
@@ -54,8 +60,10 @@ public class TopicService {
         return TopicMapper.toResponseDTO(updatedTopic);
     }
 
-    public void deleteTopic(Long coursId, Long id) {
-        Topic topic = topicRepository.findByIdAndCourseId(id, coursId)
+    public void deleteTopic(Long courseId, Long id) {
+        Course course = courseRepository.findById(courseId)
+                .orElseThrow(()-> new CourseNotFoundException(courseId));
+        Topic topic = topicRepository.findByIdAndCourseId(id, courseId)
                 .orElseThrow(() -> new TopicNotFoundException(id));
         topicRepository.delete(topic);
     }
