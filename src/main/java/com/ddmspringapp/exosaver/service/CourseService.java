@@ -1,6 +1,6 @@
 package com.ddmspringapp.exosaver.service;
 
-import com.ddmspringapp.exosaver.Exceptions.CourseNotFoundException;
+import com.ddmspringapp.exosaver.Exceptions.CourseException.CourseNotFoundException;
 import com.ddmspringapp.exosaver.dto.CourseDTO.CourseRequestDTO;
 import com.ddmspringapp.exosaver.dto.CourseDTO.CourseResponseDTO;
 import com.ddmspringapp.exosaver.mapper.CourseMapper;
