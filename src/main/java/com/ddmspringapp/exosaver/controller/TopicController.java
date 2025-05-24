@@ -2,7 +2,6 @@ package com.ddmspringapp.exosaver.controller;
 
 import com.ddmspringapp.exosaver.dto.TopicDTO.TopicRequestDTO;
 import com.ddmspringapp.exosaver.dto.TopicDTO.TopicResponseDTO;
-import com.ddmspringapp.exosaver.model.Topic;
 import com.ddmspringapp.exosaver.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,8 +24,9 @@ public class TopicController {
     }
 
     @GetMapping("/topics")
-        public List<TopicResponseDTO> getAllTopics(@PathVariable Long coursId){
-        return topicService.getAllTopics(coursId);
+        public ResponseEntity<List<TopicResponseDTO>> getAllTopics(@PathVariable Long coursId){
+        List<TopicResponseDTO> topics = topicService.getAllTopics(coursId);
+        return new ResponseEntity<>(topics, HttpStatus.OK);
     }
 
     @GetMapping("/topic/{id}")

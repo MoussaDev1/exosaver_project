@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+
 /**
  * Represents a Topic entity in the application.
  * This class is mapped to the "topic" table in the database.
