@@ -52,7 +52,7 @@ public class TopicService {
     public TopicResponseDTO updateTopic(Long topicId, Long courseId, TopicRequestDTO dto){
         courseRepository.findById(courseId)
                 .orElseThrow(()-> new CourseNotFoundException(courseId));
-        Topic topic = topicRepository.findByIdAndCourseId(courseId, topicId)
+        Topic topic = topicRepository.findByIdAndCourseId(topicId, courseId)
                 .orElseThrow(() -> new TopicNotFoundException(topicId));
         topic.setTitle(dto.getTitle());
         topic.setDescription(dto.getDescription());

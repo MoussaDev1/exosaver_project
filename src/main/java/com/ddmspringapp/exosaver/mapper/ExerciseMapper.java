@@ -11,6 +11,9 @@ public class ExerciseMapper {
         dto.setTitle(exercise.getTitle());
         dto.setDescription(exercise.getDescription());
         dto.setSolution(exercise.getSolution());
+        dto.setFeynmanSuccessCount(exercise.getFeynmanSuccessCount());
+        dto.setNextReviewDate(exercise.getNextReviewDate());
+        dto.setFeynmanStatus(exercise.getFeynmanStatus().toString());
         return dto;
     }
 

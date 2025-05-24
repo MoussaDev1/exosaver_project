@@ -28,7 +28,7 @@ public class Exercise {
 
     @Column(name = "feynman_status")
     @Enumerated(EnumType.STRING)
-    private FeynmanStatus feynmanStatus;
+    private FeynmanStatus feynmanStatus = FeynmanStatus.NOT_STARTED;
 
     @Column(name = "next_review_date")
     private LocalDateTime nextReviewDate;

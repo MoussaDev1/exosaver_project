@@ -6,14 +6,17 @@ import com.ddmspringapp.exosaver.Exceptions.TopicException.TopicNotFoundExceptio
 import com.ddmspringapp.exosaver.Exceptions.TopicException.TopicNotInCourseException;
 import com.ddmspringapp.exosaver.dto.ExerciseDTO.ExerciseRequestDTO;
 import com.ddmspringapp.exosaver.dto.ExerciseDTO.ExerciseResponseDTO;
+import com.ddmspringapp.exosaver.dto.TopicDTO.TopicRequestDTO;
 import com.ddmspringapp.exosaver.mapper.ExerciseMapper;
 import com.ddmspringapp.exosaver.model.Exercise;
+import com.ddmspringapp.exosaver.model.FeynmanStatus;
 import com.ddmspringapp.exosaver.model.Topic;
 import com.ddmspringapp.exosaver.repository.ExerciseRepository;
 import com.ddmspringapp.exosaver.repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -80,6 +83,34 @@ public class ExerciseService {
         Exercise exercise = exerciseRepository.findByIdAndTopicId(exerciseId, topicId)
                 .orElseThrow(()-> new ExerciseNotFoundException(exerciseId));
         exerciseRepository.delete(exercise);
+    }
+
+    public void UpdateFeynmanStatus(Long exerciseId, Long topicId, Long courseId, FeynmanStatus newStatus){
+        Topic topic = topicRepository.findById(topicId)
+                .orElseThrow(() -> new TopicNotFoundException(topicId));
+        if(!topic.getCourse().getId().equals(courseId)){
+            throw new TopicNotInCourseException(topicId, courseId);
+        }
+        Exercise exercise = exerciseRepository.findByIdAndTopicId(exerciseId, topicId)
+                .orElseThrow(()-> new ExerciseNotFoundException(exerciseId));
+
+        exercise.setFeynmanStatus(newStatus);
+        if (newStatus == FeynmanStatus.EXPLAINED_OK || newStatus == FeynmanStatus.REVIEW_OK){
+            int count = exercise.getFeynmanSuccessCount() + 1;
+            exercise.setFeynmanSuccessCount(count);
+
+            int days = switch (count){
+                case 1 -> 3;
+                case 2 -> 6;
+                case 3 -> 10;
+                default -> 15;
+            };
+            exercise.setNextReviewDate(LocalDateTime.now().plusDays(days));
+        } else {
+            exercise.setFeynmanSuccessCount(0);
+            exercise.setNextReviewDate(LocalDateTime.now().plusDays(1));
+        }
+        exerciseRepository.save(exercise);
     }
 }
 

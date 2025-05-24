@@ -12,4 +12,5 @@ public class ExerciseResponseDTO {
     private String Solution;
     private String FeynmanStatus;
     private LocalDateTime nextReviewDate;
+    private int feynmanSuccessCount;
 }
