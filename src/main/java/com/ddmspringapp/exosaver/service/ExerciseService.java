@@ -1,12 +1,10 @@
 package com.ddmspringapp.exosaver.service;
 
-import com.ddmspringapp.exosaver.Exceptions.CourseException.CourseNotFoundException;
 import com.ddmspringapp.exosaver.Exceptions.ExerciceException.ExerciseNotFoundException;
 import com.ddmspringapp.exosaver.Exceptions.TopicException.TopicNotFoundException;
 import com.ddmspringapp.exosaver.Exceptions.TopicException.TopicNotInCourseException;
 import com.ddmspringapp.exosaver.dto.ExerciseDTO.ExerciseRequestDTO;
 import com.ddmspringapp.exosaver.dto.ExerciseDTO.ExerciseResponseDTO;
-import com.ddmspringapp.exosaver.dto.TopicDTO.TopicRequestDTO;
 import com.ddmspringapp.exosaver.mapper.ExerciseMapper;
 import com.ddmspringapp.exosaver.model.Exercise;
 import com.ddmspringapp.exosaver.model.FeynmanStatus;

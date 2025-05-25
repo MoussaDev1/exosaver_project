@@ -1,4 +1,4 @@
-# @TopicRepository
+@TopicRepository
 ---
 
 - La particularité de ce repository c'est que l'on a des des méthodes ajouter manuellement en plus de celle de JpaRepository. Mais c'est méthodes ne sont pas définit on les nommes juste et on leurs donne les paramètres nécessaire a leurs fonctionne et spring data jpa vas nous générer la logique du code et nous permettre de l'utiliser sans avoir besoin d'écrire des lignes de codes pour la logique de ceux-ci.

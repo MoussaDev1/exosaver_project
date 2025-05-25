@@ -1,7 +1,6 @@
 package com.ddmspringapp.exosaver.controller;
 
 import com.ddmspringapp.exosaver.dto.ExerciseDTO.FeynmanEvaluationRequestDTO;
-import com.ddmspringapp.exosaver.model.FeynmanStatus;
 import com.ddmspringapp.exosaver.service.ExerciseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

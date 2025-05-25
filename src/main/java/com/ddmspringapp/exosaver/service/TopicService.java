@@ -10,6 +10,7 @@ import com.ddmspringapp.exosaver.model.Course;
 import com.ddmspringapp.exosaver.model.Topic;
 import com.ddmspringapp.exosaver.repository.CourseRepository;
 import com.ddmspringapp.exosaver.repository.TopicRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,7 +50,7 @@ public class TopicService {
         return topics.stream().map(TopicMapper::toResponseDTO).toList();
     }
 
-    public TopicResponseDTO updateTopic(Long topicId, Long courseId, TopicRequestDTO dto){
+    public TopicResponseDTO updateTopic(Long topicId, Long courseId, @NotNull TopicRequestDTO dto){
         courseRepository.findById(courseId)
                 .orElseThrow(()-> new CourseNotFoundException(courseId));
         Topic topic = topicRepository.findByIdAndCourseId(topicId, courseId)

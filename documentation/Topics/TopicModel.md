@@ -1,4 +1,4 @@
-# Entity/Model Topic :
+Entity/Model Topic :
 ---
 
 ### Dans cette entity tout est normal jusqu'au moment ou il y a :
