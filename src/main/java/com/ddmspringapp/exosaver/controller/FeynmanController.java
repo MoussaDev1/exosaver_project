@@ -15,7 +15,7 @@ public class FeynmanController {
     private ExerciseService exerciseService;
 
     @PutMapping("/exercice/{id}/feynman")
-    public ResponseEntity<Void> UpdateFeynmanStatus(@PathVariable Long id, @PathVariable Long topicId, @PathVariable Long coursId ,@RequestBody FeynmanEvaluationRequestDTO dto){
+    public ResponseEntity<Void> updateFeynmanStatus(@PathVariable Long id, @PathVariable Long topicId, @PathVariable Long coursId , @RequestBody FeynmanEvaluationRequestDTO dto){
         exerciseService.UpdateFeynmanStatus(id, topicId, coursId, dto.getFeynmanStatus());
         return new ResponseEntity<>(HttpStatus.OK);
     }
