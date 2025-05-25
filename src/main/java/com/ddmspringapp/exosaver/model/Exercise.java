@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -39,4 +41,7 @@ public class Exercise {
     @ManyToOne(optional = false)
     @JoinColumn(name = "topic_id", nullable = false)
     private Topic topic;
+
+    @OneToMany(mappedBy = "exercise")
+    private List<Resource> resources = new ArrayList<>();
 }

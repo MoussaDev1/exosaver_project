@@ -40,4 +40,7 @@ public class Course {
 
     @OneToMany(mappedBy = "course")
     private List<Topic> topic = new ArrayList<>();
+
+    @OneToMany(mappedBy = "course")
+    private List<Resource> resources = new ArrayList<>();
 }
