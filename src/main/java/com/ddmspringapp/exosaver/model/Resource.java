@@ -17,7 +17,15 @@ public class Resource {
     private Long id;
 
     private String url;
+
     private String type;
 
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
+
+    @ManyToOne
+    @JoinColumn(name = "exercise_id")
+    private Exercise exercise;
 
 }
