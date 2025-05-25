@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents a Topic entity in the application.
@@ -32,4 +33,7 @@ public class Topic {
     @ManyToOne(optional = false)
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
+
+    @OneToMany(mappedBy = "topic")
+    private List<Exercise> exercises = new ArrayList<>();
 }

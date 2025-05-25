@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDateTime;
 
-@RestControllerAdvice(assignableTypes = com.ddmspringapp.exosaver.controller.CourseController.class)
+@RestControllerAdvice
 public class CourseExceptionHandler {
 
     @ExceptionHandler(CourseNotFoundException.class)

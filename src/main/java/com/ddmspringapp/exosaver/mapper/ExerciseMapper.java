@@ -13,7 +13,7 @@ public class ExerciseMapper {
         dto.setSolution(exercise.getSolution());
         dto.setFeynmanSuccessCount(exercise.getFeynmanSuccessCount());
         dto.setNextReviewDate(exercise.getNextReviewDate());
-        dto.setFeynmanStatus(exercise.getFeynmanStatus().toString());
+        dto.setFeynmanStatus(exercise.getFeynmanStatus());
         return dto;
     }
 

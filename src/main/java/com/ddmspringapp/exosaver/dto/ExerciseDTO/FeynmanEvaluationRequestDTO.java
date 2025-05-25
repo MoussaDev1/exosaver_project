@@ -5,5 +5,5 @@ import lombok.Data;
 
 @Data
 public class FeynmanEvaluationRequestDTO {
-    private FeynmanStatus FeynmanStatus;
+    private FeynmanStatus feynmanStatus;
 }

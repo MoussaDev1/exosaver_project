@@ -1,16 +1,146 @@
-# Dto(Data Transfer Object) explication :
-- Les dto sont des classes qui permet de créer des réponses à renvoyer a l'utilisateurs en omettant des valeurs que l'on veut garder priver sans exposer directement l'entité complète (mot de passe, clé étrangère etc) Et permet de contrôler les données échangeés. :
+
+# 📦 Structuration des échanges dans une API Spring Boot
+
+Ce document regroupe 3 concepts fondamentaux pour bien structurer ton backend :
+
+- ✅ DTO (Data Transfer Object)
+- ✅ Mapper
+- ✅ Validation (`@Valid`, `@NotNull`, etc.)
+
 ---
-## Comment ça fonctionne :
-1. On créer d'abord les classes RequestDTO et ResponseDTO qui correspondront à la classe dont il faudra filtré les données. La classe RequestDTO doit correspondre aux données que l'utilisateur vas envoyé (via formulaire par exemple) donc sans l'id et ou clé ou autre. Et ResponseDTO correspondra à la classe qui contiendra les données qui seront renvoyer a l'utilisateur tout en étant filtré(sans les données sensible).
 
+## 1. ✉️ DTO (Data Transfer Object)
 
-2. Pour faire ça on utilise un Mapper (qui signifie transformé un objet d'un certain type à un autre). Le Mapper permet de transformé une Entity/Model en Une ResponseDTO (via la requête en paramètre) et de transformé une requête en une Entity/Model. Pour que celle-ci soit enregistrer dans la base de donnée et créer avec les attributs en plus dont elle aura besoin (comme la clé primaire ou un mdp).
+### 🧠 Définition
 
+Un DTO est une classe utilisée pour transférer des données entre le client et le serveur **sans exposer toute la structure interne de l'application**.
 
-3. Donc par exemple si on veut créer un user :
-L'utilisateur vas remplir un formulaire avec ses donnée dedans et vas faire une requête pour que celle ci soit exécuter.
-Une fois la requête récupérer on utilise toEntity qui vas récuperer les données du formulaire via RequestDTO qu'il à en paramètre pour créer un objet Course qui sera enregistrer en base de donnée.
-Une fois celle ci enregistrer en base de donnée disons que l'utilisateur veuille récupérer La liste de tout les utilisateur il vas faire findAll(), donc on vas utiliser la méthode toResponseDTO qui vas d'abord récuperer un Objet de type User et assigner les valeurs de celui-ci à ResponseDTO et celui ci vas ensuite être envoyé la utilisateur mais en étant filtrer car le DTO ne contiendra que les valeurs que l'on veut retourner.
+> On utilise les DTO pour séparer ce que l’utilisateur peut envoyer ou recevoir de ce qu’on utilise réellement en base de données (l'entité).
 
-Et du coup si un utilisateur essaye de faire une requête avec des valeurs que l'on ne veut pas par des moyen externe au formulaire il ne pourras pas car la requête passe par le DTO qui lui ne permettra pas d'inserer des valeurs que l'on ne veut pas que l'utilisateur manipule donc il ne se passera rien ou ça requête échoueras tout simplement.
+---
+
+### 📦 Deux types de DTO
+
+- **RequestDTO** : données que l’utilisateur est autorisé à envoyer (création, modification).
+- **ResponseDTO** : données que l’on renvoie à l’utilisateur (lecture, affichage).
+
+---
+
+### ✅ Pourquoi les utiliser ?
+
+| Raison          | Avantage                                                |
+|-----------------|---------------------------------------------------------|
+| 🔒 Sécurité     | Évite d'exposer des champs sensibles (ex : mot de passe) |
+| 🧹 Propreté     | Sépare l’API de la logique métier et des entités        |
+| 🧪 Validation   | Permet de valider facilement les données entrantes      |
+| 🔧 Flexibilité  | Tu peux formater ou adapter ce que tu exposes           |
+
+---
+
+## 2. 🔁 Mapper
+
+### 🧠 Définition
+
+Un **Mapper** est une classe utilitaire chargée de convertir un objet d’un type à un autre, souvent entre **Entity et DTO**.
+
+---
+
+### ✨ Exemple manuel :
+
+```java
+public class UserMapper {
+
+    public static User toEntity(UserRequestDTO dto) {
+        User user = new User();
+        user.setUsername(dto.getUsername());
+        user.setEmail(dto.getEmail());
+        return user;
+    }
+
+    public static UserResponseDTO toResponseDTO(User user) {
+        return new UserResponseDTO(user.getId(), user.getUsername(), user.getEmail());
+    }
+}
+```
+
+---
+
+### 🧠 Bonnes pratiques
+
+- Méthodes **statiques**
+- Pas de logique métier dedans
+- Utilisé **dans le service**, pas dans le contrôleur
+
+---
+
+### 🤖 Option avancée : MapStruct
+
+```java
+@Mapper(componentModel = "spring")
+public interface UserMapper {
+    User toEntity(UserRequestDTO dto);
+    UserResponseDTO toResponseDTO(User user);
+}
+```
+
+---
+
+## 3. 🛡️ Validation des données
+
+### 🧠 Définition
+
+La validation permet de **contrôler automatiquement** les données envoyées par l’utilisateur.  
+Elle se fait directement dans les `RequestDTO`.
+
+---
+
+### ✅ Exemples d’annotations utiles
+
+```java
+public class UserRequestDTO {
+
+    @NotBlank
+    private String username;
+
+    @Email
+    @NotBlank
+    private String email;
+
+    @Size(min = 8)
+    private String password;
+}
+```
+
+---
+
+### 🔧 Utilisation dans le contrôleur
+
+```java
+@PostMapping
+public ResponseEntity<?> createUser(@Valid @RequestBody UserRequestDTO dto) {
+    ...
+}
+```
+
+Le mot-clé `@Valid` déclenche automatiquement la validation des champs du DTO.
+
+---
+
+### 🚨 Gestion des erreurs
+
+Spring renverra automatiquement une erreur 400 si un champ invalide est détecté.  
+Tu peux personnaliser ça avec un `@ControllerAdvice`.
+
+---
+
+## ✅ Résumé global
+
+| Élément     | Rôle principal                          |
+|-------------|------------------------------------------|
+| DTO         | Encadre les données envoyées/reçues     |
+| Mapper      | Convertit DTO ↔️ Entity                  |
+| Validation  | Vérifie que les données sont correctes  |
+
+---
+
+Garder ces trois outils bien structurés, c’est garantir un code propre, maintenable et sécurisé.
