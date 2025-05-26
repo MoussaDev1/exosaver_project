@@ -69,16 +69,6 @@ Elle permet de gérer des cours, des topics, des exercices, des ressources, et d
 
 ### 🔸 Création d’un exercice
 
-```json
-POST /api/course/1/topic/2/exercices
-{
-  "title": "Comprendre les modulos",
-  "description": "Exercice pour pratiquer l’opérateur %",
-  "solution": "Utiliser a % b pour obtenir le reste.",
-  "status": "TODO"
-}
-```
-
 ---
 
 ## 🧠 Suivi Feynman
