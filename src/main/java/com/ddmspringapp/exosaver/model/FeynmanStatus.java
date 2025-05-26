@@ -7,6 +7,6 @@ public enum FeynmanStatus {
     EXPLAINED_BADLY,
     TO_REVIEW,
     REVIEW_OK,
-    REVIEW_FAILED
+    NEEDS_WORK, REVIEW_FAILED
 }
 

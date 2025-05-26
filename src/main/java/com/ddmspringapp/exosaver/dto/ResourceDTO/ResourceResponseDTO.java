@@ -7,5 +7,6 @@ public class ResourceResponseDTO {
     private Long id;
     private String url;
     private String type;
-
+    private Long courseId;
+    private Long exerciseId;
 }

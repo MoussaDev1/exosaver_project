@@ -18,6 +18,12 @@ public class ResourceMapper {
         dto.setId(resource.getId());
         dto.setUrl(resource.getUrl());
         dto.setType(resource.getType());
+        if (resource.getCourse() != null) {
+            dto.setCourseId(resource.getCourse().getId());
+        }
+        if (resource.getExercise() != null) {
+            dto.setExerciseId(resource.getExercise().getId());
+        }
         return dto;
     }
 }
