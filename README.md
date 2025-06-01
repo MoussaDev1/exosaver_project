@@ -83,3 +83,4 @@ Elle permet de gérer des cours, des topics, des exercices, des ressources, et d
 - Authentification utilisateur
 - Filtres de recherche
 - Gestion de progression détaillée
+- Ajout d'une interface
