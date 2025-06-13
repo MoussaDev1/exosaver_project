@@ -1,7 +1,7 @@
 # Exercice Entity :
 ---
 
-- Cette entity est comme les autres juste a qu'elle exceptions prêt :
+- Cette entity est comme les autres juste a quelques exceptions près :
 
 ```java
 @Column(name = "feynman_status")
