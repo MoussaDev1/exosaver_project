@@ -1,0 +1,23 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <input name="titre" [(ngModel)]="course.title" required placeholder="Titre" />
+  <input
+    name="description"
+    [(ngModel)]="course.description"
+    required
+    placeholder="description"
+  />
+  <input
+    name="objectives"
+    [(ngModel)]="course.objectives"
+    required
+    placeholder="objectives"
+  />
+  <input
+    name="themes"
+    [(ngModel)]="course.themes"
+    required
+    placeholder="themes"
+  />
+  <button type="submit">Ajouter un cours</button>
+  <a routerLink="">Revenir au menu</a>
+</form>

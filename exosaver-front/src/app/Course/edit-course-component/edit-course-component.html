@@ -1,0 +1,23 @@
+<form #fEdit="ngForm" (ngSubmit)="onUpdateCourse(fEdit)">
+  <input name="title" [(ngModel)]="course.title" required placeholder="Titre" />
+  <input
+    name="description"
+    [(ngModel)]="course.description"
+    required
+    placeholder="Description"
+  />
+  <input
+    name="objectives"
+    [(ngModel)]="course.objectives"
+    required
+    placeholder="Objectifs"
+  />
+  <input
+    name="themes"
+    [(ngModel)]="course.themes"
+    required
+    placeholder="Thèmes"
+  />
+  <button type="submit">Mettre à jour le cours</button>
+  <a routerLink="/course/{{ course.id }}">Revenir au cours</a>
+</form>

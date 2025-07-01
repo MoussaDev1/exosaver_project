@@ -1,0 +1,10 @@
+<h2>Detail du cours</h2>
+<a routerLink="">Retournez au menu principale</a>
+<div>
+  <h2>{{ course.title }}</h2>
+  <p>{{ course.description }}</p>
+  <p>Objectifs: {{ course.objectives }}</p>
+  <p>Thèmes: {{ course.themes }}</p>
+  <button (click)="onDeleteCourse(course.id)">Supprimer le cours</button>
+  <button (click)="onViewUpdateCourse(course.id)">Modifier le cours</button>
+</div>
