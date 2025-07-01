@@ -1,0 +1,16 @@
+@use "@angular/material" as mat;
+.sidenav-container {
+  height: 100vh;
+  background-color: white;
+}
+
+.sidenav {
+  border-right: 1px solid #00000018;
+  border-radius: 0;
+  background-color: #fcfcfc;
+  width: 200px;
+}
+
+mat-drawer-content {
+  padding-left: 40px;
+}

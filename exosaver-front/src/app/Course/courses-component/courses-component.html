@@ -1,0 +1,25 @@
+@if (courses) {
+<a routerLink="create">Nouveau Cours</a>
+<h2>Courses</h2>
+<!-- //Pour chaqye cours, afficher le titre, la description et un bouton pour voir le cours -->
+@for (course of courses; track course.id) {
+<mat-card appearance="outlined">
+  <div>
+    <mat-card-header>
+      <mat-card-title>{{ course.title }}</mat-card-title>
+      <mat-card-subtitle>{{ course.description }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>{{ course.objectives }}</mat-card-content>
+    <mat-card-content>{{ course.themes }}</mat-card-content>
+    <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+
+    <!-- Afficher un bouton pour voir le cours en fonction de l'id du cours 
+   //Onpeut avoir accès a l'id ici car on a utilisé track dans la boucle for et que
+  dans le composant 
+  //dans les tableau Courses[] il y a des id auquel on peut accéder. -->
+    <button mat-flat-button color="primary" (click)="onViewCourse(course.id)">
+      Voir le cours
+    </button>
+  </div>
+</mat-card>
+} }

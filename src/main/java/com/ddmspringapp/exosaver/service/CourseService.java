@@ -21,7 +21,11 @@ import java.util.List;
 public class CourseService {
 
     @Autowired
-    private CourseRepository courseRepository;
+    private final CourseRepository courseRepository;
+
+    public CourseService(CourseRepository courseRepository) {
+        this.courseRepository = courseRepository;
+    }
 
     public CourseResponseDTO createCourse(CourseRequestDTO dto){
         Course course = CourseMapper.toEntity(dto);

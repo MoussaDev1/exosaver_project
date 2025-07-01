@@ -3,7 +3,6 @@ package com.ddmspringapp.exosaver.service;
 import com.ddmspringapp.exosaver.Exceptions.CourseException.CourseNotFoundException;
 import com.ddmspringapp.exosaver.Exceptions.ExerciceException.ExerciseNotFoundException;
 import com.ddmspringapp.exosaver.Exceptions.ResourceException.ResourceNotFoundException;
-import com.ddmspringapp.exosaver.Exceptions.TopicException.TopicNotFoundException;
 import com.ddmspringapp.exosaver.dto.ResourceDTO.ResourceRequestDTO;
 import com.ddmspringapp.exosaver.dto.ResourceDTO.ResourceResponseDTO;
 import com.ddmspringapp.exosaver.mapper.ResourceMapper;
@@ -12,11 +11,8 @@ import com.ddmspringapp.exosaver.model.Exercise;
 import com.ddmspringapp.exosaver.model.Resource;
 import com.ddmspringapp.exosaver.repository.CourseRepository;
 import com.ddmspringapp.exosaver.repository.ExerciseRepository;
-import com.ddmspringapp.exosaver.repository.ResourceRepository;
-import com.ddmspringapp.exosaver.repository.TopicRepository;
-import org.springframework.stereotype.Service;
+import com.ddmspringapp.exosaver.repository.ResourceRepository;import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

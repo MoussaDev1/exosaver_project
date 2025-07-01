@@ -1,0 +1,25 @@
+<mat-sidenav-container>
+  <h2>Exosaver</h2>
+  <p>Apprend à t'as manière</p>
+  <mat-button-toggle-group
+    [hideSingleSelectionIndicator]="true"
+    name="fontStyle"
+    aria-label="Font Style"
+  >
+    <div class="sidenav-content">
+      <ul>
+        @for (navElement of navElements; track navElement.name) {
+        <li>
+          <mat-button-toggle
+            [routerLink]="navElement.link"
+            [value]="navElement.name"
+            class="sidenav-item"
+          >
+            {{ navElement.name }}
+          </mat-button-toggle>
+        </li>
+        }
+      </ul>
+    </div>
+  </mat-button-toggle-group>
+</mat-sidenav-container>

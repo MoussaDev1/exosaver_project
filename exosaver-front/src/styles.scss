@@ -1,0 +1,45 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.dev/guide/theming
+@use "@angular/material" as mat;
+
+html {
+  color-scheme: light;
+  @include mat.theme(
+    (
+      color: (
+        theme-type: light,
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+:host {
+  background: var();
+}
+
+:root {
+  @include mat.button-toggle-overrides(
+    (
+      selected-state-background-color: #eef8ff,
+      legacy-text-color: red,
+      state-layer-color: #53b5fb,
+    )
+  );
+}
+
+body.dark-mode {
+  color-scheme: dark;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
