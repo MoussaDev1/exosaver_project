@@ -10,13 +10,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/api")
 public class CourseController {
 
     @Autowired
-    private CourseService courseService;
+    private final CourseService courseService;
+
+    public CourseController(CourseService courseService) {
+        this.courseService = courseService;
+    }
 
     @PostMapping("/courses")
     public ResponseEntity<CourseResponseDTO> createCourse(@RequestBody CourseRequestDTO dto){
@@ -45,6 +48,6 @@ public class CourseController {
     @DeleteMapping("/course/{id}")
     public ResponseEntity<String> deleteCourse(@PathVariable Long id){
         courseService.deleteCourse(id);
-        return ResponseEntity.ok("Cours supprimé avec succès");
+        return ResponseEntity.noContent().build();
     }
 }

@@ -20,10 +20,13 @@ import java.util.List;
 @Service
 public class ExerciseService {
 
-    @Autowired
-    private ExerciseRepository exerciseRepository;
-    @Autowired
-    private TopicRepository topicRepository;
+    private final ExerciseRepository exerciseRepository;
+    private final TopicRepository topicRepository;
+
+    public ExerciseService(ExerciseRepository exerciseRepository, TopicRepository topicRepository) {
+        this.exerciseRepository = exerciseRepository;
+        this.topicRepository = topicRepository;
+    }
 
     public ExerciseResponseDTO createExercise(ExerciseRequestDTO dto, Long topicId, Long courseId) {
         Topic topic = topicRepository.findById(topicId)
