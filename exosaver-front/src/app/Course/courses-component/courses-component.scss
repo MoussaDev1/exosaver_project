@@ -1,0 +1,98 @@
+@use "@angular/material" as mat;
+
+.courses-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+
+  h2 {
+    margin: 0px;
+  }
+
+  p {
+    margin-top: 0;
+  }
+
+  a {
+    border-radius: 5px;
+  }
+}
+
+.courses-header-cards {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-content: space-evenly;
+  background-color: inherit;
+
+  mat-card {
+    background-color: inherit;
+    padding: 10px 100px 10px 100px;
+  }
+
+  mat-card-title {
+    h3 {
+      margin: 0;
+      text-align: center;
+      color: rgb(54, 147, 228);
+    }
+  }
+  mat-card-subtitle {
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.courses-container {
+  margin-bottom: 20px;
+
+  mat-card {
+    background-color: inherit;
+  }
+
+  .card-courses {
+    padding: 20px 30px 20px 30px;
+  }
+
+  .card-courses-header {
+    mat-card-header {
+      padding: 0;
+      margin-bottom: 20px;
+
+      mat-card-title {
+        font-weight: 600;
+      }
+      mat-card-subtitle {
+        font-weight: 400;
+        font-style: italic;
+      }
+    }
+  }
+
+  .progress-bar-courses {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .progress-bar-courses-content {
+    p {
+      margin: 0;
+    }
+  }
+
+  .card-courses-infos-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .card-courses-button {
+    button {
+      border-radius: 10px;
+    }
+  }
+}
