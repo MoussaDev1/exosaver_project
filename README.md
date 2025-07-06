@@ -81,6 +81,6 @@ Elle permet de gérer des cours, des topics, des exercices, des ressources, et d
 ## 🚀 À venir
 
 - Authentification utilisateur
-- Filtres de recherche
+- DashBoard
 - Gestion de progression détaillée
 - Ajout d'une interface angular (en cours)
