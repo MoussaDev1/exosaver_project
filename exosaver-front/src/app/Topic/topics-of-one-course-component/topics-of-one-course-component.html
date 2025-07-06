@@ -1,0 +1,13 @@
+@if(topic.length >0){
+<h2>Sujets du cours</h2>
+@for (topics of topic; track topics.id ) {
+<div>
+  <div>
+    <h3>{{ topics.title }}</h3>
+    <p>{{ topics.description }}</p>
+    <button (click)="onViewOneTopic(topics.courseId, topics.id)">
+      Voir le sujet
+    </button>
+  </div>
+</div>
+} }

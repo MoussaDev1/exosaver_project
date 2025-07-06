@@ -3,10 +3,20 @@ import { CreateCourseComponent } from './Course/create-course-component/create-c
 import { CoursesComponent } from './Course/courses-component/courses-component';
 import { OneCourseComponent } from './Course/one-course-component/one-course-component';
 import { EditCourseComponent } from './Course/edit-course-component/edit-course-component';
+import { OneTopicsComponent } from './Topic/one-topics-component/one-topics-component';
+import { EditTopicComponent } from './Topic/edit-topic-component/edit-topic-component';
 
 export const routes: Routes = [
   { path: '', component: CoursesComponent },
   { path: 'create', component: CreateCourseComponent },
-  { path: 'course/:id', component: OneCourseComponent },
-  { path: 'course/edit/:id', component: EditCourseComponent },
+  { path: 'course/:idCourse', component: OneCourseComponent },
+  { path: 'course/edit/:idCourse', component: EditCourseComponent },
+  {
+    path: 'course/:idCourse/topics/:idTopic',
+    component: OneTopicsComponent,
+  },
+  {
+    path: 'course/:idCourse/topic/edit/:idTopic',
+    component: EditTopicComponent,
+  },
 ];

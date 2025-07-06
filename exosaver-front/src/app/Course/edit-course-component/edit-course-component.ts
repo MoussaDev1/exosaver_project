@@ -33,7 +33,7 @@ export class EditCourseComponent implements OnInit {
    * On en a besoin pour pré-remplir le formulaire d'édition du cours.
    */
   ngOnInit(): void {
-    const courseId = this.route.snapshot.params['id'];
+    const courseId = this.route.snapshot.params['idCourse'];
     this.courseService.getCourseById(courseId).subscribe({
       next: (course) => {
         this.course = course;

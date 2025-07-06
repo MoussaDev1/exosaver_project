@@ -3,10 +3,11 @@ import { Courses } from '../../models/courses';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CourseService } from '../../services/course-service';
 import { FormsModule, NgForm } from '@angular/forms';
+import { TopicsOfOneCourseComponent } from '../../Topic/topics-of-one-course-component/topics-of-one-course-component';
 
 @Component({
   selector: 'app-one-course-component',
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, TopicsOfOneCourseComponent],
   templateUrl: './one-course-component.html',
   styleUrl: './one-course-component.scss',
 })
@@ -36,7 +37,7 @@ export class OneCourseComponent implements OnInit {
   }
 
   private getCourseById(): void {
-    const courseId = this.route.snapshot.params['id'];
+    const courseId = this.route.snapshot.params['idCourse'];
     this.courseService.getCourseById(courseId).subscribe({
       next: (course) => {
         this.course = course;

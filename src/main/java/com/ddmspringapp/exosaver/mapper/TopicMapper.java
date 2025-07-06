@@ -11,6 +11,12 @@ public class TopicMapper {
         dto.setId(topic.getId());
         dto.setTitle(topic.getTitle());
         dto.setDescription(topic.getDescription());
+        if (topic.getCourse() != null) {
+            dto.setCourseId(topic.getCourse().getId());
+        }
+        else {
+            dto.setCourseId(null);
+        }
         return dto;
     }
 

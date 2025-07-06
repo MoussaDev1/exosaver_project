@@ -1,25 +1,60 @@
 @if (courses) {
-<a routerLink="create">Nouveau Cours</a>
-<h2>Courses</h2>
-<!-- //Pour chaqye cours, afficher le titre, la description et un bouton pour voir le cours -->
-@for (course of courses; track course.id) {
-<mat-card appearance="outlined">
-  <div>
-    <mat-card-header>
-      <mat-card-title>{{ course.title }}</mat-card-title>
-      <mat-card-subtitle>{{ course.description }}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>{{ course.objectives }}</mat-card-content>
-    <mat-card-content>{{ course.themes }}</mat-card-content>
-    <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
-
-    <!-- Afficher un bouton pour voir le cours en fonction de l'id du cours 
-   //Onpeut avoir accès a l'id ici car on a utilisé track dans la boucle for et que
-  dans le composant 
-  //dans les tableau Courses[] il y a des id auquel on peut accéder. -->
-    <button mat-flat-button color="primary" (click)="onViewCourse(course.id)">
-      Voir le cours
-    </button>
+<div class="courses-header">
+  <div class="courses-header-title">
+    <h2>Mes Cours</h2>
+    <p>Gérez vos cours et suivez votre progression</p>
   </div>
-</mat-card>
+  <div class="courses-header-new">
+    <a mat-flat-button routerLink="create">+ Nouveau Cours</a>
+  </div>
+</div>
+
+<div class="courses-header-cards">
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <mat-card-title
+        ><h3>{{ courses.length }}</h3></mat-card-title
+      >
+      <mat-card-subtitle><p>Cours Actifs</p></mat-card-subtitle>
+    </mat-card-content>
+  </mat-card>
+</div>
+<!-- //Pour chaqye cours, afficher le titre, la description et un bouton pour voir le cours -->
+
+@for (course of courses; track course.id) {
+<div class="courses-container">
+  <mat-card appearance="outlined">
+    <div class="card-courses">
+      <div class="card-courses-header">
+        <mat-card-header>
+          <mat-card-title>{{ course.title }}</mat-card-title>
+          <mat-card-subtitle>{{ course.objectives }}</mat-card-subtitle>
+        </mat-card-header>
+      </div>
+      <div class="progress-bar-courses-content">
+        <p>Progression</p>
+        <div class="progress-bar-courses">
+          <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+          <p>40%</p>
+        </div>
+      </div>
+      <div class="card-courses-infos-content">
+        <div class="card-courses-infos">
+          <span>
+            {{ course.themes }}
+          </span>
+        </div>
+        <div class="card-courses-button">
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="onViewCourse(course.id)"
+          >
+            Voir le cours
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
 } }

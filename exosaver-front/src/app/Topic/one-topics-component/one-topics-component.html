@@ -1,0 +1,12 @@
+<div>
+  <a routerLink="/course/{{ topic.courseId }}">Retournez au cours</a>
+  <h2>Sujet du cours</h2>
+  <h3>{{ topic.title }}</h3>
+  <p>{{ topic.description }}</p>
+  <button (click)="onDeleteTopic(topic.courseId, topic.id)">
+    Supprimer le sujet
+  </button>
+  <button (click)="onViewUpdateTopic(topic.courseId, topic.id)">
+    Mettre à jour le sujet
+  </button>
+</div>
