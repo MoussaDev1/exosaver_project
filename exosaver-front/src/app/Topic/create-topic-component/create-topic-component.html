@@ -1,0 +1,11 @@
+<form #formCreateTopic="ngForm" (ngSubmit)="onSubmit(formCreateTopic)">
+  <input name="titre" [(ngModel)]="topic.title" required placeholder="Titre" />
+  <input
+    name="description"
+    [(ngModel)]="topic.description"
+    required
+    placeholder="description"
+  />
+  <button type="submit">Ajouter un sujet</button>
+  <button (click)="onReturnCourseView()">Revenir au menu</button>
+</form>

@@ -1,7 +1,6 @@
+import { Topic } from './../../models/topics';
 import { TopicService } from './../../services/topic-service';
 import { Component, Input, OnInit } from '@angular/core';
-import { CourseService } from '../../services/course-service';
-import { Topic } from '../../models/topics';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -12,6 +11,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class TopicsOfOneCourseComponent implements OnInit {
   topic: Topic[] = [];
+  OneTopic: Topic = {
+    title: '',
+    description: '',
+  };
 
   constructor(
     private topicService: TopicService,
@@ -37,9 +40,11 @@ export class TopicsOfOneCourseComponent implements OnInit {
     this.router.navigate([`course/${idCourse}/topics/${idTopic}`]);
   }
 
-  onViewCreateTopic(idCourse: number, topic: Topic): void {
-    this.topicService.createTopic(idCourse, topic).subscribe((newTopic) => {
-      this.topic.push(newTopic);
-    });
+  onViewCreateTopic(): void {
+    const idCourseParam = this.route.snapshot.paramMap.get('idCourse');
+    if (idCourseParam !== null) {
+      const idCourse = Number(idCourseParam);
+      this.router.navigate([`course/${idCourse}/topic/create`]);
+    }
   }
 }
