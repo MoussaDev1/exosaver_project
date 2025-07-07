@@ -44,19 +44,6 @@ export class CreateCourseComponent {
 
   constructor(private courseService: CourseService) {}
 
-  updateTtitle(newTitle: string) {
-    this.courseDraft.title = newTitle;
-  }
-  updateDescription(newDescription: string) {
-    this.courseDraft.description = newDescription;
-  }
-  updateObjectives(newObjectives: string) {
-    this.courseDraft.objectives = newObjectives;
-  }
-  updateThemes(newThemes: string) {
-    this.courseDraft.themes = newThemes;
-  }
-
   onSubmit(form: NgForm): void {
     this.courseService.createCourse(this.course).subscribe({
       next: (newCourse) => {
