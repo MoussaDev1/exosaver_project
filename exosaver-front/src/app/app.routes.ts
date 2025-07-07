@@ -13,7 +13,7 @@ export const routes: Routes = [
   { path: 'course/:idCourse', component: OneCourseComponent },
   { path: 'course/edit/:idCourse', component: EditCourseComponent },
   {
-    path: 'course/:idCourse/topics/:idTopic',
+    path: 'course/:idCourse/topic/:idTopic',
     component: OneTopicsComponent,
   },
   {

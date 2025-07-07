@@ -1,0 +1,13 @@
+@if (exercices) {
+<h2>Listes des exercices</h2>
+@for (exercice of exercices; track exercice.id) {
+<div>
+  <h3>{{ exercice.title }}</h3>
+  <p>{{ exercice.description }}</p>
+  <p>
+    Prochaîne revision :
+    {{ exercice.nextReviewDate | date : "d MMMM yyyy, à HH:mm" }}
+  </p>
+</div>
+<button>Voir le cours</button>
+} }
