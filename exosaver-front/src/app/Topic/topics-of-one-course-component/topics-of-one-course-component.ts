@@ -37,7 +37,7 @@ export class TopicsOfOneCourseComponent implements OnInit {
     idCourse: number | undefined,
     idTopic: number | undefined
   ): void {
-    this.router.navigate([`course/${idCourse}/topics/${idTopic}`]);
+    this.router.navigate([`course/${idCourse}/topic/${idTopic}`]);
   }
 
   onViewCreateTopic(): void {

@@ -6,6 +6,9 @@ import { EditCourseComponent } from './Course/edit-course-component/edit-course-
 import { OneTopicsComponent } from './Topic/one-topics-component/one-topics-component';
 import { EditTopicComponent } from './Topic/edit-topic-component/edit-topic-component';
 import { CreateTopicComponent } from './Topic/create-topic-component/create-topic-component';
+import { OneExerciceComponent } from './Exercice/one-exercice-component/one-exercice-component';
+import { CreateExerciceComponent } from './Exercice/create-exercice-component/create-exercice-component';
+import { EditExerciceComponent } from './Exercice/edit-exercice-component/edit-exercice-component';
 
 export const routes: Routes = [
   { path: '', component: CoursesComponent },
@@ -13,7 +16,7 @@ export const routes: Routes = [
   { path: 'course/:idCourse', component: OneCourseComponent },
   { path: 'course/edit/:idCourse', component: EditCourseComponent },
   {
-    path: 'course/:idCourse/topics/:idTopic',
+    path: 'course/:idCourse/topic/:idTopic',
     component: OneTopicsComponent,
   },
   {
@@ -21,4 +24,16 @@ export const routes: Routes = [
     component: EditTopicComponent,
   },
   { path: 'course/:idCourse/topic/create', component: CreateTopicComponent },
+  {
+    path: 'course/:idCourse/topic/:idTopic/exercice/:idExercice',
+    component: OneExerciceComponent,
+  },
+  {
+    path: 'course/:idCourse/topic/:idTopic/exercices/create',
+    component: CreateExerciceComponent,
+  },
+  {
+    path: 'course/:idCourse/topic/:idTopic/exercice/edit/:idExercice',
+    component: EditExerciceComponent,
+  },
 ];

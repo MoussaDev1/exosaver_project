@@ -1,0 +1,17 @@
+<form #formCreateExercice="ngForm" (ngSubmit)="onSubmit(formCreateExercice)">
+  <input
+    name="titre"
+    [(ngModel)]="exercice.title"
+    required
+    placeholder="Titre"
+  />
+  <input
+    name="description"
+    [(ngModel)]="exercice.description"
+    required
+    placeholder="description"
+  />
+  <input name="solution" [(ngModel)]="exercice.solution" required />
+  <button type="submit">Ajouter un sujet</button>
+  <button (click)="onReturnTopicView()">Revenir au menu</button>
+</form>

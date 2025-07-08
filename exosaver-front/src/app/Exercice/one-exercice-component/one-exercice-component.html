@@ -1,0 +1,16 @@
+<div>
+  <h2>{{ exercice.title }}</h2>
+  <p>{{ exercice.description }}</p>
+  <p>
+    Prochaine révision:
+    {{ exercice.nextReviewDate | date : "longDate" }} minutes
+  </p>
+  <p>Status du cours: {{ exercice.feynmanStatus }}</p>
+  <p>
+    Combien de fois le cours a été reussi d'affilé:
+    {{ exercice.feynmanSuccessCount }}
+  </p>
+  <p>Solution donnée: {{ exercice.solution }}</p>
+</div>
+<button (click)="onViewUpdateExercice()">Modifier le cours</button>
+<button (click)="onDeleteExercice()">Supprimer le cours</button>
