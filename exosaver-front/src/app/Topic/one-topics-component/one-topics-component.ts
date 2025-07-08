@@ -65,4 +65,17 @@ export class OneTopicsComponent implements OnInit {
       this.router.navigate([`/course/${idCourse}/topic/edit/${idTopic}`]);
     }
   }
+  onViewCreateExercice() {
+    const idCourseParam = this.route.snapshot.paramMap.get('idCourse');
+    const idTopicParam = this.route.snapshot.paramMap.get('idTopic');
+    if (idCourseParam !== null && idTopicParam !== null) {
+      const idCourse = Number(idCourseParam);
+      const idTopic = Number(idTopicParam);
+      this.router.navigate([
+        `/course/${idCourse}/topic/${idTopic}/exercices/create`,
+      ]);
+    } else {
+      console.error('No course or topic ID found in route parameters.');
+    }
+  }
 }

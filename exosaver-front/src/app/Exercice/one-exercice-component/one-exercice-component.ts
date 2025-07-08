@@ -7,7 +7,7 @@ import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-one-exercice-component',
-  imports: [DatePipe, RouterLink],
+  imports: [DatePipe],
   templateUrl: './one-exercice-component.html',
   styleUrl: './one-exercice-component.scss',
 })

@@ -7,6 +7,7 @@ import { OneTopicsComponent } from './Topic/one-topics-component/one-topics-comp
 import { EditTopicComponent } from './Topic/edit-topic-component/edit-topic-component';
 import { CreateTopicComponent } from './Topic/create-topic-component/create-topic-component';
 import { OneExerciceComponent } from './Exercice/one-exercice-component/one-exercice-component';
+import { CreateExerciceComponent } from './Exercice/create-exercice-component/create-exercice-component';
 
 export const routes: Routes = [
   { path: '', component: CoursesComponent },
@@ -25,5 +26,9 @@ export const routes: Routes = [
   {
     path: 'course/:idCourse/topic/:idTopic/exercice/:idExercice',
     component: OneExerciceComponent,
+  },
+  {
+    path: 'course/:idCourse/topic/:idTopic/exercices/create',
+    component: CreateExerciceComponent,
   },
 ];
