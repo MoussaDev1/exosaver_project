@@ -1,8 +1,9 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ExercicesService } from '../../services/exercices-service';
 import { exercices } from './../../models/exercices';
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { Topic } from '../../models/topics';
 
 @Component({
   selector: 'exercice-of-one-topic',
@@ -12,10 +13,15 @@ import { DatePipe } from '@angular/common';
 })
 export class ExerciceOfOneTopic implements OnInit {
   exercices: exercices[] = [];
+  topic: Topic = {
+    title: '',
+    description: '',
+  };
 
   constructor(
     private exerciceService: ExercicesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -28,10 +34,20 @@ export class ExerciceOfOneTopic implements OnInit {
       this.exerciceService
         .getAllExercicesByTopicId(idCourse, idTopic)
         .subscribe((exercice) => {
-          console.log(exercice);
-
           this.exercices = exercice;
         });
+    }
+  }
+
+  onViewOneExercice(idExercice?: number): void {
+    const idCourseParam = this.route.snapshot.paramMap.get('idCourse');
+    const idTopicParam = this.route.snapshot.paramMap.get('idTopic');
+    if (idCourseParam !== null && idTopicParam !== null) {
+      const idCourse = Number(idCourseParam);
+      const idTopic = Number(idTopicParam);
+      this.router.navigate([
+        `course/${idCourse}/topic/${idTopic}/exercice/${idExercice}`,
+      ]);
     }
   }
 }

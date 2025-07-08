@@ -9,5 +9,5 @@
     {{ exercice.nextReviewDate | date : "d MMMM yyyy, à HH:mm" }}
   </p>
 </div>
-<button>Voir le cours</button>
+<button (click)="onViewOneExercice(exercice.id)">Voir le cours</button>
 } }
