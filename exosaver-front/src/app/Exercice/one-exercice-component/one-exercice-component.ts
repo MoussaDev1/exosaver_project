@@ -69,4 +69,27 @@ export class OneExerciceComponent implements OnInit {
       ]);
     }
   }
+
+  onDeleteExercice(): void {
+    const idCourseParam = this.route.snapshot.paramMap.get('idCourse');
+    const idTopicParam = this.route.snapshot.paramMap.get('idTopic');
+    const idExerciceParam = this.route.snapshot.paramMap.get('idExercice');
+
+    if (idCourseParam && idTopicParam && idExerciceParam) {
+      const idCourse = Number(idCourseParam);
+      const idTopic = Number(idTopicParam);
+      const idExercice = Number(idExerciceParam);
+
+      this.exerciceService
+        .deleteExercice(idCourse, idTopic, idExercice)
+        .subscribe({
+          next: () => {
+            this.router.navigate([`/course/${idCourse}/topic/${idTopic}`]);
+          },
+          error: (error) => {
+            console.error('Error deleting exercice:', error);
+          },
+        });
+    }
+  }
 }
