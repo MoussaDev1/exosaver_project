@@ -1,4 +1,4 @@
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { exercices } from '../../models/exercices';
 import { FeynmanStatus } from '../../models/feynmanStatus';
@@ -20,7 +20,8 @@ export class OneExerciceComponent implements OnInit {
 
   constructor(
     private exerciceService: ExercicesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -51,5 +52,21 @@ export class OneExerciceComponent implements OnInit {
           console.error('Error fetching exercice:', error);
         },
       });
+  }
+
+  onViewUpdateExercice(): void {
+    const idCourseParam = this.route.snapshot.paramMap.get('idCourse');
+    const idTopicParam = this.route.snapshot.paramMap.get('idTopic');
+    const idExerciceParam = this.route.snapshot.paramMap.get('idExercice');
+
+    if (idCourseParam && idTopicParam && idExerciceParam) {
+      const idCourse = Number(idCourseParam);
+      const idTopic = Number(idTopicParam);
+      const idExercice = Number(idExerciceParam);
+      // Navigate to the edit page for the exercice
+      this.router.navigate([
+        `/course/${idCourse}/topic/${idTopic}/exercice/edit/${idExercice}`,
+      ]);
+    }
   }
 }
