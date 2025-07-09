@@ -58,12 +58,12 @@ export class ExercicesService {
   }
 
   updateFeynmanStatus(
-    idExercice: number,
-    idTopic: number,
     idCourse: number,
+    idTopic: number,
+    idExercice: number,
     feynmanStatus: FeynmanStatus
-  ): Observable<FeynmanStatus> {
+  ): Observable<void> {
     const url = `${this.apiUrl}/${idCourse}/topic/${idTopic}/exercice/${idExercice}/feynman`;
-    return this.http.put<FeynmanStatus>(url, feynmanStatus);
+    return this.http.put<void>(url, { feynmanStatus: feynmanStatus });
   }
 }

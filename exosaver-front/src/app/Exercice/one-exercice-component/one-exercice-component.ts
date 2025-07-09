@@ -3,11 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { exercices } from '../../models/exercices';
 import { FeynmanStatus } from '../../models/feynmanStatus';
 import { ExercicesService } from '../../services/exercices-service';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgFor } from '@angular/common';
+import { UpdateFeynmanComponent } from '../update-feynman-component/update-feynman-component';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-one-exercice-component',
-  imports: [DatePipe],
+  imports: [DatePipe, UpdateFeynmanComponent, MatFormFieldModule],
   templateUrl: './one-exercice-component.html',
   styleUrl: './one-exercice-component.scss',
 })
@@ -91,5 +93,12 @@ export class OneExerciceComponent implements OnInit {
           },
         });
     }
+  }
+
+  onFeynmanStatusUpdated(newStatus: FeynmanStatus) {
+    this.exercice = {
+      ...this.exercice,
+      feynmanStatus: newStatus,
+    };
   }
 }
