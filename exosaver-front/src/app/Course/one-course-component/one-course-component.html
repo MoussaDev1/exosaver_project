@@ -1,12 +1,35 @@
-<h2>Detail du cours</h2>
-<a routerLink="">Retournez au menu principale</a>
-<div>
-  <h2>{{ course.title }}</h2>
-  <p>{{ course.description }}</p>
-  <p>Objectifs: {{ course.objectives }}</p>
-  <p>Thèmes: {{ course.themes }}</p>
-  <button (click)="onDeleteCourse(course.id)">Supprimer le cours</button>
-  <button (click)="onViewUpdateCourse(course.id)">Modifier le cours</button>
+<header>
+  <div class="back-link">
+    <a routerLink="">Retournez au menu principale</a>
+  </div>
+  <div class="state-course">
+    <div class="delete-course">
+      <button matButton (click)="onDeleteCourse(course.id)">
+        Supprimer le cours
+      </button>
+    </div>
+    <div class="update-course">
+      <button matButton (click)="onViewUpdateCourse(course.id)">
+        Modifier le cours
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="course-card-container">
+  <mat-card appearance="outlined" class="course-card">
+    <mat-card-header class="course-card-header">
+      <mat-card-title
+        ><h2>{{ course.title }}</h2></mat-card-title
+      >
+      <mat-card-subtitle>{{ course.description }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card appearance="outlined" class="info-course">
+      <mat-card-title>{{ topicCount }}</mat-card-title>
+      <mat-card-subtitle><p>Sujets</p></mat-card-subtitle>
+    </mat-card>
+  </mat-card>
 </div>
 
 <app-topics-of-one-course-component />

@@ -15,23 +15,27 @@ export const routes: Routes = [
   { path: 'create', component: CreateCourseComponent },
   { path: 'course/:idCourse', component: OneCourseComponent },
   { path: 'course/edit/:idCourse', component: EditCourseComponent },
+  { path: 'course/:idCourse/topic/create', component: CreateTopicComponent },
   {
     path: 'course/:idCourse/topic/:idTopic',
     component: OneTopicsComponent,
   },
+
   {
     path: 'course/:idCourse/topic/edit/:idTopic',
     component: EditTopicComponent,
   },
-  { path: 'course/:idCourse/topic/create', component: CreateTopicComponent },
+
   {
     path: 'course/:idCourse/topic/:idTopic/exercice/:idExercice',
     component: OneExerciceComponent,
   },
+
   {
     path: 'course/:idCourse/topic/:idTopic/exercices/create',
     component: CreateExerciceComponent,
   },
+
   {
     path: 'course/:idCourse/topic/:idTopic/exercice/edit/:idExercice',
     component: EditExerciceComponent,
