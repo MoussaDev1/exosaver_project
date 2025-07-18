@@ -1,13 +1,27 @@
-import { Component, Input, NgModule, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Courses } from '../../models/courses';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  RouterLink,
+  RouterOutlet,
+} from '@angular/router';
 import { CourseService } from '../../services/course-service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { TopicsOfOneCourseComponent } from '../../Topic/topics-of-one-course-component/topics-of-one-course-component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { TopicService } from '../../services/topic-service';
 
 @Component({
   selector: 'app-one-course-component',
-  imports: [FormsModule, RouterLink, TopicsOfOneCourseComponent],
+  imports: [
+    FormsModule,
+    RouterLink,
+    MatCardModule,
+    MatButtonModule,
+    TopicsOfOneCourseComponent,
+  ],
   templateUrl: './one-course-component.html',
   styleUrl: './one-course-component.scss',
 })
@@ -18,11 +32,13 @@ export class OneCourseComponent implements OnInit {
     objectives: '',
     themes: '',
   };
+  topicCount = 0;
 
   constructor(
     private route: ActivatedRoute,
     private courseService: CourseService,
-    private router: Router
+    private router: Router,
+    private topicService: TopicService
   ) {}
 
   /*   * Permet de récupérer un cours par son id :
@@ -34,6 +50,12 @@ export class OneCourseComponent implements OnInit {
    */
   ngOnInit(): void {
     this.getCourseById();
+    const courseId = this.route.snapshot.params['idCourse'];
+    if (courseId) {
+      this.topicService.getAllTopicsByCourseId(courseId).subscribe((topics) => {
+        this.topicCount = topics.length;
+      });
+    }
   }
 
   private getCourseById(): void {

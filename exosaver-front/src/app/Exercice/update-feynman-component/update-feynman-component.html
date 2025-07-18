@@ -1,0 +1,9 @@
+<form #fUpdateFeynman="ngForm" (ngSubmit)="onSumbitFeynmanForm(fUpdateFeynman)">
+  <textarea placeholder="Votre explication du concept"></textarea>
+  <select [(ngModel)]="exercice.feynmanStatus" name="feynmanStatus">
+    @for (status of feynmanStatuses; track $index) {
+    <option [value]="status">{{ statusLabels[status] }}</option>
+    }
+  </select>
+  <button type="submit">Mettre à jour le statut Feynman</button>
+</form>

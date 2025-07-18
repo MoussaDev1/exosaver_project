@@ -14,3 +14,7 @@
 </div>
 <button (click)="onViewUpdateExercice()">Modifier le cours</button>
 <button (click)="onDeleteExercice()">Supprimer le cours</button>
+
+<app-update-feynman-component
+  (statusUpdated)="onFeynmanStatusUpdated($event)"
+></app-update-feynman-component>

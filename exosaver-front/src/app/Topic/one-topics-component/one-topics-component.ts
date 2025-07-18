@@ -26,10 +26,18 @@ export class OneTopicsComponent implements OnInit {
     const idCourseParam = this.route.snapshot.paramMap.get('idCourse');
     const idTopicParam = this.route.snapshot.paramMap.get('idTopic');
 
-    if (idCourseParam && idTopicParam) {
+    if (idCourseParam !== null && idTopicParam !== null) {
       const idCourse = Number(idCourseParam);
       const idTopic = Number(idTopicParam);
-      this.onGetTopicById(idCourse, idTopic);
+      if (!isNaN(idTopic)) {
+        this.onGetTopicById(idCourse, idTopic);
+      } else {
+        console.warn('IdTopic ou IdCourse is not a number');
+      }
+    } else {
+      console.log(
+        'Pas de idTopic dans la route → probablement sur /topic/create'
+      );
     }
   }
 
@@ -65,6 +73,7 @@ export class OneTopicsComponent implements OnInit {
       this.router.navigate([`/course/${idCourse}/topic/edit/${idTopic}`]);
     }
   }
+
   onViewCreateExercice() {
     const idCourseParam = this.route.snapshot.paramMap.get('idCourse');
     const idTopicParam = this.route.snapshot.paramMap.get('idTopic');
