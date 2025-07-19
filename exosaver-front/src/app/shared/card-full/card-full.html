@@ -19,6 +19,7 @@
           <span>
             {{ theme }}
           </span>
+          <ng-content select="[date-review]"></ng-content>
         </div>
         <div class="card-courses-button">
           <button mat-flat-button color="primary" (click)="onButtonClick?.()">

@@ -7,6 +7,18 @@
   [buttonText]="'Voir l’exercice'"
   [onButtonClick]="onCardButtonClick(exercice.id)"
 >
-</app-card-full>
+  @if (!exercice.nextReviewDate) {
+  <span date-review>
+    <i class="material-icons">schedule</i>
+    Commencer l'exercice
+  </span>
 
+  } @else{
+  <span date-review>
+    Prochaine révision :
+    {{ exercice.nextReviewDate | date : "d MMMM yyyy, à HH:mm" }}
+  </span>
+
+  }
+</app-card-full>
 } }
