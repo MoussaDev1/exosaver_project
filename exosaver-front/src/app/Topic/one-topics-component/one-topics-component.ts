@@ -4,24 +4,29 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Topic } from '../../models/topics';
 import { ExerciceOfOneTopic } from '../../Exercice/get-all-exercice-of-one-topic/exercice-of-one-topic';
 import { MatCardModule } from '@angular/material/card';
+import { ExercicesService } from '../../services/exercices-service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-one-topics-component',
-  imports: [RouterLink, ExerciceOfOneTopic, MatCardModule],
+  imports: [RouterLink, ExerciceOfOneTopic, MatCardModule, MatButtonModule],
   templateUrl: './one-topics-component.html',
   styleUrl: './one-topics-component.scss',
 })
 export class OneTopicsComponent implements OnInit {
   topic: Topic = {
+    id: undefined,
     title: '',
     description: '',
     courseId: undefined,
   };
+  exerciceCount = 0;
 
   constructor(
     private topicService: TopicService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private exerciceService: ExercicesService
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +38,11 @@ export class OneTopicsComponent implements OnInit {
       const idTopic = Number(idTopicParam);
       if (!isNaN(idTopic)) {
         this.onGetTopicById(idCourse, idTopic);
+        this.exerciceService
+          .getAllExercicesByTopicId(idCourse, idTopic)
+          .subscribe((exercices) => {
+            this.exerciceCount = exercices.length;
+          });
       } else {
         console.warn('IdTopic ou IdCourse is not a number');
       }
@@ -47,7 +57,6 @@ export class OneTopicsComponent implements OnInit {
     this.topicService.getTopicById(idCourse, idTopic).subscribe({
       next: (topic) => {
         this.topic = topic; // Assuming the API returns a single topic
-        console.log(topic);
       },
       error: (error) => {
         console.error('Error fetching topic:', error);

@@ -1,13 +1,12 @@
 @if (exercices) {
 <h2>Listes des exercices</h2>
 @for (exercice of exercices; track exercice.id) {
-<div>
-  <h3>{{ exercice.title }}</h3>
-  <p>{{ exercice.description }}</p>
-  <p>
-    Prochaîne revision :
-    {{ exercice.nextReviewDate | date : "d MMMM yyyy, à HH:mm" }}
-  </p>
-</div>
-<button (click)="onViewOneExercice(exercice.id)">Voir le cours</button>
+<app-card-full
+  [title]="exercice.title"
+  [subtitle]="exercice.description"
+  [buttonText]="'Voir l’exercice'"
+  [onButtonClick]="onCardButtonClick(exercice.id)"
+>
+</app-card-full>
+
 } }

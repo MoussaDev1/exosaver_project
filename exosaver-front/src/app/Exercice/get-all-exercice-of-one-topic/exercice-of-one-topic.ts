@@ -4,10 +4,11 @@ import { exercices } from './../../models/exercices';
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Topic } from '../../models/topics';
+import { CardFull } from '../../shared/card-full/card-full';
 
 @Component({
   selector: 'exercice-of-one-topic',
-  imports: [DatePipe],
+  imports: [DatePipe, CardFull],
   templateUrl: './exercice-of-one-topic.html',
   styleUrl: './exercice-of-one-topic.scss',
 })
@@ -49,5 +50,8 @@ export class ExerciceOfOneTopic implements OnInit {
         `course/${idCourse}/topic/${idTopic}/exercice/${idExercice}`,
       ]);
     }
+  }
+  onCardButtonClick(idExercice: number | undefined): () => void {
+    return () => this.onViewOneExercice(idExercice);
   }
 }
