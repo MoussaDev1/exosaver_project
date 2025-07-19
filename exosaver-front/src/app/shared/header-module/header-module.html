@@ -1,0 +1,22 @@
+<div class="course-card-container">
+  <mat-card appearance="outlined" class="course-card">
+    <mat-card-header class="course-card-header">
+      <mat-card-title>
+        <h2>{{ title }}</h2></mat-card-title
+      >
+      <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <div class="info-course-card-header">
+      <mat-card appearance="outlined" class="info-course">
+        <mat-card-title>
+          <h3>{{ count }}</h3></mat-card-title
+        >
+        <ng-content select="[info-card-header]"></ng-content>
+        <mat-card-subtitle>
+          <p>{{ moduleName }}</p>
+        </mat-card-subtitle>
+      </mat-card>
+    </div>
+  </mat-card>
+</div>

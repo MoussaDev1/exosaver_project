@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FeynmanStatus } from '../../models/feynmanStatus';
 import { FormsModule, NgForm } from '@angular/forms';
 import { MatSelect, MatSelectModule } from '@angular/material/select';
@@ -6,10 +6,23 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { exercices } from '../../models/exercices';
 import { ExercicesService } from '../../services/exercices-service';
 import { ActivatedRoute } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { DatePipe } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-update-feynman-component',
-  imports: [FormsModule, MatSelectModule, MatFormFieldModule],
+  imports: [
+    FormsModule,
+    DatePipe,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+  ],
   templateUrl: './update-feynman-component.html',
   styleUrl: './update-feynman-component.scss',
 })
@@ -23,6 +36,7 @@ export class UpdateFeynmanComponent {
     feynmanStatus: FeynmanStatus.NOT_STARTED,
   };
 
+  @Input() nextDateReview?: Date;
   @Output() statusUpdated = new EventEmitter<FeynmanStatus>();
 
   statusLabels = {

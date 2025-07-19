@@ -6,10 +6,17 @@ import { ExerciceOfOneTopic } from '../../Exercice/get-all-exercice-of-one-topic
 import { MatCardModule } from '@angular/material/card';
 import { ExercicesService } from '../../services/exercices-service';
 import { MatButtonModule } from '@angular/material/button';
+import { HeaderModule } from '../../shared/header-module/header-module';
 
 @Component({
   selector: 'app-one-topics-component',
-  imports: [RouterLink, ExerciceOfOneTopic, MatCardModule, MatButtonModule],
+  imports: [
+    RouterLink,
+    ExerciceOfOneTopic,
+    MatCardModule,
+    MatButtonModule,
+    HeaderModule,
+  ],
   templateUrl: './one-topics-component.html',
   styleUrl: './one-topics-component.scss',
 })
