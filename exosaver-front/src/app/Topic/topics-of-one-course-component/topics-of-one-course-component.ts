@@ -1,11 +1,13 @@
+import { CardFull } from '../../shared/card-full/card-full';
 import { Topic } from './../../models/topics';
 import { TopicService } from './../../services/topic-service';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-topics-of-one-course-component',
-  imports: [],
+  imports: [CardFull, MatButtonModule],
   templateUrl: './topics-of-one-course-component.html',
   styleUrl: './topics-of-one-course-component.scss',
 })
@@ -38,6 +40,13 @@ export class TopicsOfOneCourseComponent implements OnInit {
     idTopic: number | undefined
   ): void {
     this.router.navigate([`course/${idCourse}/topic/${idTopic}`]);
+  }
+
+  onCardButtonClick(
+    idCourse: number | undefined,
+    idTopic: number | undefined
+  ): () => void {
+    return () => this.onViewOneTopic(idCourse, idTopic);
   }
 
   onViewCreateTopic(): void {

@@ -19,16 +19,20 @@
 <div class="course-card-container">
   <mat-card appearance="outlined" class="course-card">
     <mat-card-header class="course-card-header">
-      <mat-card-title
-        ><h2>{{ course.title }}</h2></mat-card-title
+      <mat-card-title>
+        <h2>{{ course.title }}</h2></mat-card-title
       >
       <mat-card-subtitle>{{ course.description }}</mat-card-subtitle>
     </mat-card-header>
 
-    <mat-card appearance="outlined" class="info-course">
-      <mat-card-title>{{ topicCount }}</mat-card-title>
-      <mat-card-subtitle><p>Sujets</p></mat-card-subtitle>
-    </mat-card>
+    <div class="info-course-card-header">
+      <mat-card appearance="outlined" class="info-course">
+        <mat-card-title>
+          <h3>{{ topicCount }}</h3></mat-card-title
+        >
+        <mat-card-subtitle><p>Sujets</p></mat-card-subtitle>
+      </mat-card>
+    </div>
   </mat-card>
 </div>
 

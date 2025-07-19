@@ -1,0 +1,31 @@
+<div class="courses-container">
+  <mat-card appearance="outlined">
+    <div class="card-courses">
+      <div class="card-courses-header">
+        <mat-card-header>
+          <mat-card-title>{{ title }}</mat-card-title>
+          <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
+        </mat-card-header>
+      </div>
+      <div class="progress-bar-courses-content">
+        <p>Progression</p>
+        <div class="progress-bar-courses">
+          <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+          <p>40%</p>
+        </div>
+      </div>
+      <div class="card-courses-infos-content">
+        <div class="card-courses-infos">
+          <span>
+            {{ theme }}
+          </span>
+        </div>
+        <div class="card-courses-button">
+          <button mat-flat-button color="primary" (click)="onButtonClick?.()">
+            {{ buttonText }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

@@ -1,3 +1,8 @@
+.state-course {
+  display: flex;
+  justify-content: flex-end;
+}
+
 mat-card {
   background-color: inherit;
 }
@@ -5,6 +10,26 @@ mat-card {
 .course-card {
   padding: 20px;
   h2 {
+    margin: 0;
+  }
+}
+
+.info-course-card-header {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.info-course {
+  padding: 10px 100px 10px 100px;
+  display: flex;
+  align-items: center;
+
+  h3 {
+    margin: 10px 0 0 0;
+  }
+  p {
     margin: 0;
   }
 }

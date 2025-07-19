@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
   <a routerLink="/course/{{ topic.courseId }}">Retournez au cours</a>
   <h2>Sujet du cours</h2>
   <h3>{{ topic.title }}</h3>
@@ -12,5 +12,42 @@
 </div>
 <div>
   <button (click)="onViewCreateExercice()">Créer un cours</button>
-  <exercice-of-one-topic />
+  
+</div> -->
+
+<header>
+  <div class="back-link">
+    <a routerLink="">Retournez au menu principale</a>
+  </div>
+  <div class="state-course">
+    <div class="delete-course">
+      <button matButton (click)="onDeleteTopic(topic.courseId, topic.id)">
+        Supprimer le cours
+      </button>
+    </div>
+    <div class="update-course">
+      <button matButton (click)="onViewUpdateTopic(topic.courseId, topic.id)">
+        Modifier le cours
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="course-card-container">
+  <mat-card appearance="outlined" class="course-card">
+    <mat-card-header class="course-card-header">
+      <mat-card-title>
+        <h2>{{ topic.title }}</h2></mat-card-title
+      >
+      <mat-card-subtitle>{{ topic.description }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <div class="info-course-card-header">
+      <mat-card appearance="outlined" class="info-course">
+        <mat-card-title> <h3></h3></mat-card-title>
+        <mat-card-subtitle><p>Sujets</p></mat-card-subtitle>
+      </mat-card>
+    </div>
+  </mat-card>
 </div>
+<exercice-of-one-topic />

@@ -3,10 +3,11 @@ import { TopicService } from '../../services/topic-service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Topic } from '../../models/topics';
 import { ExerciceOfOneTopic } from '../../Exercice/get-all-exercice-of-one-topic/exercice-of-one-topic';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-one-topics-component',
-  imports: [RouterLink, ExerciceOfOneTopic],
+  imports: [RouterLink, ExerciceOfOneTopic, MatCardModule],
   templateUrl: './one-topics-component.html',
   styleUrl: './one-topics-component.scss',
 })
@@ -14,6 +15,7 @@ export class OneTopicsComponent implements OnInit {
   topic: Topic = {
     title: '',
     description: '',
+    courseId: undefined,
   };
 
   constructor(
@@ -45,6 +47,7 @@ export class OneTopicsComponent implements OnInit {
     this.topicService.getTopicById(idCourse, idTopic).subscribe({
       next: (topic) => {
         this.topic = topic; // Assuming the API returns a single topic
+        console.log(topic);
       },
       error: (error) => {
         console.error('Error fetching topic:', error);
