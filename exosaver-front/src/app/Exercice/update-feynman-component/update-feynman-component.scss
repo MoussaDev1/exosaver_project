@@ -1,0 +1,37 @@
+.feynman-card {
+  padding: 15px;
+  background-color: #faf5ff;
+  width: 100%;
+
+  h2 {
+    margin: 19px 0 0 0;
+    color: #6b21bb;
+  }
+}
+
+.next-review {
+  color: #7e4adc;
+}
+
+.feynman-instruction {
+  margin-top: 0;
+}
+
+.feynman-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feynman-explaination-textarea {
+  resize: none;
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  padding: 10px;
+  border-color: rgba(0, 0, 0, 0.224);
+}
+
+cdk-overlay-origin {
+  display: block;
+}

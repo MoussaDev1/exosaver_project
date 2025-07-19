@@ -1,20 +1,23 @@
 <div>
-  <h2>{{ exercice.title }}</h2>
-  <p>{{ exercice.description }}</p>
-  <p>
-    Prochaine révision:
-    {{ exercice.nextReviewDate | date : "longDate" }} minutes
-  </p>
-  <p>Status du cours: {{ exercice.feynmanStatus }}</p>
-  <p>
-    Combien de fois le cours a été reussi d'affilé:
-    {{ exercice.feynmanSuccessCount }}
-  </p>
-  <p>Solution donnée: {{ exercice.solution }}</p>
+  <button matButton (click)="onViewUpdateExercice()">Modifier le cours</button>
+  <button matButton (click)="onDeleteExercice()">Supprimer le cours</button>
 </div>
-<button (click)="onViewUpdateExercice()">Modifier le cours</button>
-<button (click)="onDeleteExercice()">Supprimer le cours</button>
-
+<app-header-module
+  [title]="exercice.title"
+  [moduleName]="'Nombre de Feynman réussis'"
+>
+  <h2 info-card-header>
+    {{ exercice.feynmanSuccessCount }}
+  </h2>
+</app-header-module>
+<div class="exercice-enonce">
+  <h3>Énoncé de l'exercice</h3>
+  <ul>
+    <li>{{ exercice.description }}</li>
+    <li>{{ exercice.solution }}</li>
+  </ul>
+</div>
 <app-update-feynman-component
   (statusUpdated)="onFeynmanStatusUpdated($event)"
+  [nextDateReview]="exercice.nextReviewDate"
 ></app-update-feynman-component>

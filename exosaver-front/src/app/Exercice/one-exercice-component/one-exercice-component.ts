@@ -1,15 +1,22 @@
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { exercices } from '../../models/exercices';
 import { FeynmanStatus } from '../../models/feynmanStatus';
 import { ExercicesService } from '../../services/exercices-service';
-import { DatePipe, NgFor } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { UpdateFeynmanComponent } from '../update-feynman-component/update-feynman-component';
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { HeaderModule } from '../../shared/header-module/header-module';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-one-exercice-component',
-  imports: [DatePipe, UpdateFeynmanComponent, MatFormFieldModule],
+  imports: [
+    UpdateFeynmanComponent,
+    MatFormFieldModule,
+    HeaderModule,
+    MatButtonModule,
+  ],
   templateUrl: './one-exercice-component.html',
   styleUrl: './one-exercice-component.scss',
 })

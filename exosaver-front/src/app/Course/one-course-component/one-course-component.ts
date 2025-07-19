@@ -12,6 +12,7 @@ import { TopicsOfOneCourseComponent } from '../../Topic/topics-of-one-course-com
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { TopicService } from '../../services/topic-service';
+import { HeaderModule } from '../../shared/header-module/header-module';
 
 @Component({
   selector: 'app-one-course-component',
@@ -21,6 +22,7 @@ import { TopicService } from '../../services/topic-service';
     MatCardModule,
     MatButtonModule,
     TopicsOfOneCourseComponent,
+    HeaderModule,
   ],
   templateUrl: './one-course-component.html',
   styleUrl: './one-course-component.scss',

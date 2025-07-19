@@ -1,9 +1,38 @@
-<form #fUpdateFeynman="ngForm" (ngSubmit)="onSumbitFeynmanForm(fUpdateFeynman)">
-  <textarea placeholder="Votre explication du concept"></textarea>
-  <select [(ngModel)]="exercice.feynmanStatus" name="feynmanStatus">
-    @for (status of feynmanStatuses; track $index) {
-    <option [value]="status">{{ statusLabels[status] }}</option>
-    }
-  </select>
-  <button type="submit">Mettre à jour le statut Feynman</button>
-</form>
+<div class="form-feynman-explaination">
+  <mat-card appearance="outlined" class="feynman-card">
+    <h2>Explication Feynman</h2>
+    <p class="next-review">
+      Prochaine révision : Dans {{ nextDateReview | date : "dd" }} Jours
+    </p>
+    <p class="feynman-instruction">
+      Expliquez le concept de cet exercice avec vos propres mots, comme si vous
+      l'enseigniez à quelqu'un d'autre.
+    </p>
+    <div class="feynman-form-container">
+      <form
+        class="feynman-form"
+        #fUpdateFeynman="ngForm"
+        (ngSubmit)="onSumbitFeynmanForm(fUpdateFeynman)"
+      >
+        <textarea
+          matInput
+          class="feynman-explaination-textarea"
+          placeholder="Votre explication du concept..."
+          rows="10"
+          cols="100"
+        ></textarea>
+        <div class="feynman-status-select">
+          <mat-select [(ngModel)]="exercice.feynmanStatus" name="feynmanStatus">
+            @for (status of feynmanStatuses; track $index) {
+            <mat-option [value]="status">{{ statusLabels[status] }}</mat-option>
+            }
+          </mat-select>
+
+          <button matButton type="submit">
+            Mettre à jour le statut Feynman
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-card>
+</div>

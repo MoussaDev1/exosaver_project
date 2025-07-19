@@ -1,16 +1,25 @@
-<div>
-  <a routerLink="/course/{{ topic.courseId }}">Retournez au cours</a>
-  <h2>Sujet du cours</h2>
-  <h3>{{ topic.title }}</h3>
-  <p>{{ topic.description }}</p>
-  <button (click)="onDeleteTopic(topic.courseId, topic.id)">
-    Supprimer le sujet
-  </button>
-  <button (click)="onViewUpdateTopic(topic.courseId, topic.id)">
-    Mettre à jour le sujet
-  </button>
-</div>
-<div>
-  <button (click)="onViewCreateExercice()">Créer un cours</button>
-  <exercice-of-one-topic />
-</div>
+<header>
+  <div class="back-link">
+    <a routerLink="">Retournez au menu principale</a>
+  </div>
+  <div class="state-course">
+    <div class="delete-course">
+      <button matButton (click)="onDeleteTopic(topic.courseId, topic.id)">
+        Supprimer le cours
+      </button>
+    </div>
+    <div class="update-course">
+      <button matButton (click)="onViewUpdateTopic(topic.courseId, topic.id)">
+        Modifier le cours
+      </button>
+    </div>
+  </div>
+</header>
+<app-header-module
+  [title]="topic.title"
+  [subtitle]="topic.description"
+  [count]="exerciceCount"
+  [moduleName]="'Exercices'"
+>
+</app-header-module>
+<exercice-of-one-topic />
