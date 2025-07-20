@@ -1,7 +1,7 @@
 # 🎓 ExoSaver API
 
 Bienvenue dans l’API **ExoSaver**, une application d’apprentissage par exercices avec suivi Feynman.  
-Elle permet de gérer des cours, des topics, des exercices, des ressources, et d’évaluer la compréhension avec la méthode Feynman.
+Elle permet de gérer des cours, des topics, des exercices, des ressources, et d’évaluer la compréhension avec la méthode Feynman. Et en ayant des cours espacé pour renforcé la mémorisation des apprentissages
 
 ---
 
