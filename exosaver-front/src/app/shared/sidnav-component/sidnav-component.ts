@@ -2,12 +2,9 @@ import { Component, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
-import {
-  MatProgressBar,
-  MatProgressBarModule,
-} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 export interface navElements {
   name: string;
@@ -18,7 +15,6 @@ export interface navElements {
   selector: 'app-sidnav-component',
   imports: [
     MatSidenavModule,
-    RouterModule,
     MatButtonToggleModule,
     MatButtonModule,
     MatCardModule,

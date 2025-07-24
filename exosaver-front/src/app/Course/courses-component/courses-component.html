@@ -22,12 +22,39 @@
 <!-- //Pour chaqye cours, afficher le titre, la description et un bouton pour voir le cours -->
 
 @for (course of courses; track course.id) {
-<app-card-full
-  [title]="course.title"
-  [subtitle]="course.description"
-  [theme]="course.themes"
-  buttonText="Voir le cours"
-  [onButtonClick]="onCardButtonClick(course.id)"
->
-</app-card-full>
+<div class="courses-container">
+  <mat-card appearance="outlined">
+    <div class="card-courses">
+      <div class="card-courses-header">
+        <mat-card-header>
+          <mat-card-title>{{ course.title }}</mat-card-title>
+          <mat-card-subtitle>{{ course.objectives }}</mat-card-subtitle>
+        </mat-card-header>
+      </div>
+      <div class="progress-bar-courses-content">
+        <p>Progression</p>
+        <div class="progress-bar-courses">
+          <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+          <p>40%</p>
+        </div>
+      </div>
+      <div class="card-courses-infos-content">
+        <div class="card-courses-infos">
+          <span>
+            {{ course.themes }}
+          </span>
+        </div>
+        <div class="card-courses-button">
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="onViewCourse(course.id)"
+          >
+            Voir le cours
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
 } }

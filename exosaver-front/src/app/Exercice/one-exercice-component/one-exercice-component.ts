@@ -26,6 +26,8 @@ export class OneExerciceComponent implements OnInit {
     description: '',
     solution: '',
   };
+  courseId!: number;
+  topicId!: number;
 
   constructor(
     private exerciceService: ExercicesService,
@@ -43,6 +45,11 @@ export class OneExerciceComponent implements OnInit {
       const idTopic = Number(idTopicParam);
       const idExercice = Number(idExerciceParam);
       this.onGetExerciceById(idCourse, idTopic, idExercice);
+
+      this.courseId = idCourse; // Store courseId for later use
+      this.topicId = idTopic; // Store topicId for later use
+      console.log(`Course ID: ${this.courseId}`);
+      console.log(`Topic ID: ${this.topicId}`);
     }
   }
 
@@ -107,5 +114,13 @@ export class OneExerciceComponent implements OnInit {
       ...this.exercice,
       feynmanStatus: newStatus,
     };
+  }
+
+  onReturnToTopic(topicId?: number, courseId?: number) {
+    if (topicId !== undefined && courseId !== undefined) {
+      this.router.navigate([`/course/${courseId}/topic/${topicId}`]);
+    } else {
+      console.error('No topic or course ID found to return to.');
+    }
   }
 }
