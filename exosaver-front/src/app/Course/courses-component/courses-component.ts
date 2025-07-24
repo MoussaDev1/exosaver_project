@@ -6,7 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { CardFull } from '../../shared/card-full/card-full';
+import { BreadcrumbComponent } from '../../shared/breacrumb-component/breacrumb-component';
 
 @Component({
   selector: 'app-courses-component',
@@ -16,7 +16,7 @@ import { CardFull } from '../../shared/card-full/card-full';
     MatButtonModule,
     MatCardModule,
     MatProgressBarModule,
-    CardFull,
+    BreadcrumbComponent,
   ],
   templateUrl: './courses-component.html',
   styleUrl: './courses-component.scss',
@@ -51,9 +51,5 @@ export class CoursesComponent implements OnInit {
   */
   onViewCourse(id: number | undefined): void {
     this.router.navigateByUrl(`course/${id}`);
-  }
-  // courses-component.ts
-  onCardButtonClick(id: number | undefined): () => void {
-    return () => this.onViewCourse(id);
   }
 }

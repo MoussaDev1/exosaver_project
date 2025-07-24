@@ -11,14 +11,31 @@ import { CreateExerciceComponent } from './Exercice/create-exercice-component/cr
 import { EditExerciceComponent } from './Exercice/edit-exercice-component/edit-exercice-component';
 
 export const routes: Routes = [
-  { path: '', component: CoursesComponent },
-  { path: 'create', component: CreateCourseComponent },
-  { path: 'course/:idCourse', component: OneCourseComponent },
-  { path: 'course/edit/:idCourse', component: EditCourseComponent },
-  { path: 'course/:idCourse/topic/create', component: CreateTopicComponent },
+  { path: '', component: CoursesComponent, data: { breadcrumb: 'Courses' } },
+  {
+    path: 'create',
+    component: CreateCourseComponent,
+    data: { breadcrumb: 'Create Course' },
+  },
+  {
+    path: 'course/:idCourse',
+    component: OneCourseComponent,
+    data: { breadcrumb: 'Course Details' },
+  },
+  {
+    path: 'course/edit/:idCourse',
+    component: EditCourseComponent,
+    data: { breadcrumb: 'Edit Course' },
+  },
+  {
+    path: 'course/:idCourse/topic/create',
+    component: CreateTopicComponent,
+    data: { breadcrumb: 'Create Topic' },
+  },
   {
     path: 'course/:idCourse/topic/:idTopic',
     component: OneTopicsComponent,
+    data: { breadcrumb: 'Sujet Détails' },
   },
 
   {
@@ -29,6 +46,7 @@ export const routes: Routes = [
   {
     path: 'course/:idCourse/topic/:idTopic/exercice/:idExercice',
     component: OneExerciceComponent,
+    data: { breadcrumb: 'Exercice Détails' },
   },
 
   {
