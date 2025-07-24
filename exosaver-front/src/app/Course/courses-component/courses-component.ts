@@ -6,7 +6,6 @@ import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { BreadcrumbComponent } from '../../shared/breacrumb-component/breacrumb-component';
 
 @Component({
   selector: 'app-courses-component',
@@ -16,7 +15,6 @@ import { BreadcrumbComponent } from '../../shared/breacrumb-component/breacrumb-
     MatButtonModule,
     MatCardModule,
     MatProgressBarModule,
-    BreadcrumbComponent,
   ],
   templateUrl: './courses-component.html',
   styleUrl: './courses-component.scss',

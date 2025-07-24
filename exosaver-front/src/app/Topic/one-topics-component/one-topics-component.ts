@@ -10,13 +10,7 @@ import { HeaderModule } from '../../shared/header-module/header-module';
 
 @Component({
   selector: 'app-one-topics-component',
-  imports: [
-    RouterLink,
-    ExerciceOfOneTopic,
-    MatCardModule,
-    MatButtonModule,
-    HeaderModule,
-  ],
+  imports: [ExerciceOfOneTopic, MatCardModule, MatButtonModule, HeaderModule],
   templateUrl: './one-topics-component.html',
   styleUrl: './one-topics-component.scss',
 })
@@ -104,6 +98,14 @@ export class OneTopicsComponent implements OnInit {
       ]);
     } else {
       console.error('No course or topic ID found in route parameters.');
+    }
+  }
+
+  onReturnToCourse(idCourse: number | undefined) {
+    if (idCourse !== undefined) {
+      this.router.navigate([`/course/${idCourse}`]);
+    } else {
+      console.error('No course ID found to return to.');
     }
   }
 }
